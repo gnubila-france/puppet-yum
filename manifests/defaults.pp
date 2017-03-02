@@ -18,9 +18,15 @@ class yum::defaults ( ) inherits yum::params {
   if 'remi_php71' in $yum::extrarepo { include ::yum::repo::remi_php71 }
   if 'tmz' in $yum::extrarepo and $osver[0] != '4' { include ::yum::repo::tmz }
   if 'webtatic' in $yum::extrarepo { include ::yum::repo::webtatic }
+## legacy PuppetLabs repositories :
   if 'puppetlabs' in $yum::extrarepo and $osver[0] != '4' { include ::yum::repo::puppetlabs }
   if 'puppetdevel' in $yum::extrarepo and $osver[0] != '4' { include ::yum::repo::puppetdevel }
   if 'puppetlabs_collections' in $yum::extrarepo { include ::yum::repo::puppetlabs_collections }
+## Puppet company repositories :
+  if 'puppet' in $yum::extrarepo and $osver[0] != '4' { include ::yum::repo::puppet }
+  if 'puppet_devel' in $yum::extrarepo and $osver[0] != '4' { include ::yum::repo::puppet_devel }
+  if 'puppet_collections' in $yum::extrarepo { include ::yum::repo::puppet_collections }
+
   if 'nginx' in $yum::extrarepo and $osver[0] != '4' { include ::yum::repo::nginx }
   if 'mongodb' in $yum::extrarepo and $osver[0] != '4' { include ::yum::repo::mongodb }
   if 'repoforge' in $yum::extrarepo { include ::yum::repo::repoforge }
@@ -47,6 +53,9 @@ class yum::defaults ( ) inherits yum::params {
         if 'karan' in $yum::extrarepo { include ::yum::repo::karan }
         if 'atomic' in $yum::extrarepo { include ::yum::repo::atomic }
         if 'scl' in $yum::extrarepo { include ::yum::repo::scl }
+## sclo
+        if 'sclo_sclo' in $yum::extrarepo { include ::yum::repo::sclo_sclo }
+        if 'sclo_rh' in $yum::extrarepo { include ::yum::repo::sclo_rh }
       }
       'redhat': {
       }
